@@ -11,7 +11,12 @@ private:
 public:
   Display(DisplayInterface *const interface);
 
-  void init();
+  template <typename IOInitializier>
+  void init(IOInitializier&& init_io) {
+    init_io();
+    interface->init();
+    clear();
+  }
 
   void set_cursor(uint8_t x, uint8_t y);
 

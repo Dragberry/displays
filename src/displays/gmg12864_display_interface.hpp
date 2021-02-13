@@ -1,9 +1,9 @@
-#ifndef INC_GMG12864_DISPLAY_INTERFACE_HPP_
-#define INC_GMG12864_DISPLAY_INTERFACE_HPP_
+#ifndef INC_JLX12864_DISPLAY_INTERFACE_HPP_
+#define INC_JLX12864_DISPLAY_INTERFACE_HPP_
 
 #include <displays/display_interface.hpp>
 
-class JLX12864DisplayInterface : public DisplayInterface {
+class GMG12864DisplayInterface : public DisplayInterface {
 private:
   const uint16_t CS;
   const uint16_t RST;
@@ -12,7 +12,7 @@ private:
   const uint16_t SCK;
 
 public:
-  JLX12864DisplayInterface(
+  GMG12864DisplayInterface(
       volatile uint32_t *const PORT,
       const uint16_t CS,
       const uint16_t RST,

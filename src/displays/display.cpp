@@ -5,11 +5,6 @@ Display::Display(DisplayInterface *const interface) :
     interface(interface) {
 }
 
-void Display::init() {
-  interface->init();
-  clear();
-}
-
 void Display::set_cursor(uint8_t x, uint8_t y) {
   interface->set_cursor(x, y);
 }
@@ -22,8 +17,6 @@ void Display::clear() {
       interface->write_data(0x00);
     }
   }
-
-  interface->set_cursor(0, 0);
 }
 
 void Display::fill() {
@@ -34,8 +27,6 @@ void Display::fill() {
       interface->write_data(0xff);
     }
   }
-
-  interface->set_cursor(0, 0);
 }
 
 void Display::put_char(const char c) {
