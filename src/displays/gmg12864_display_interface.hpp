@@ -5,6 +5,7 @@
 
 class GMG12864DisplayInterface : public DisplayInterface {
 private:
+  volatile uint32_t *const PORT;
   const uint16_t CS;
   const uint16_t RST;
   const uint16_t RS;
@@ -20,8 +21,8 @@ public:
       const uint16_t SDA,
       const uint16_t SCK
       ) :
-      DisplayInterface(128, 64, PORT),
-      CS(CS), RST(RST), RS(RS), SDA(SDA), SCK(SCK) {
+      DisplayInterface(128, 64),
+      PORT(PORT), CS(CS), RST(RST), RS(RS), SDA(SDA), SCK(SCK) {
   }
 
 public:

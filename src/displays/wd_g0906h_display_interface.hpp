@@ -5,6 +5,7 @@
 
 class WD_G0906DisplayInterface : public DisplayInterface {
 private:
+  volatile uint32_t *const PORT;
   const uint16_t CS;
   const uint16_t RST;
   const uint16_t SDA;
@@ -18,8 +19,8 @@ public:
       const uint16_t SDA,
       const uint16_t SCK
       ) :
-      DisplayInterface(96, 68, PORT),
-      CS(CS), RST(RST), SDA(SDA), SCK(SCK) {
+      DisplayInterface(96, 68),
+      PORT(PORT), CS(CS), RST(RST), SDA(SDA), SCK(SCK) {
   }
 
   void init();

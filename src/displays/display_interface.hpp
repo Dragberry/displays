@@ -5,19 +5,17 @@
 
 class DisplayInterface {
 protected:
-  volatile uint32_t *const port;
-
-  inline
-  void sbi(const uint16_t bit) {
+  inline static
+  void sbi(volatile uint32_t *const port, const uint16_t bit) {
     *port |= (1 << bit);
   }
 
-  inline
-  void cbi(const uint16_t bit) {
+  inline static
+  void cbi(volatile uint32_t *const port, const uint16_t bit) {
     *port &= ~(1 << bit);
   }
 
-  inline
+  inline static
   void delay(uint16_t time) {
     while (time--);
   }
@@ -27,8 +25,7 @@ public:
   const uint8_t pixel_height;
   const uint8_t row_height;
 
-  DisplayInterface(uint8_t pixel_width, uint8_t pixel_height, volatile uint32_t *const port) :
-    port(port),
+  DisplayInterface(uint8_t pixel_width, uint8_t pixel_height) :
     pixel_width(pixel_width),
     pixel_height(pixel_height),
     row_height((pixel_height + 7) / 8) {
