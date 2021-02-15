@@ -10,8 +10,7 @@ void Display::set_cursor(uint8_t x, uint8_t y) {
 }
 
 void Display::clear() {
-  register uint32_t i, j;
-  for (i = 0; i < interface->row_height; i++) {
+  for (register uint8_t i = 0; i < interface->row_height; i++) {
     interface->set_cursor(0, i);
     for (j = 0; j < interface->pixel_width; j++) {
       interface->write_data(0x00);
@@ -20,8 +19,7 @@ void Display::clear() {
 }
 
 void Display::fill() {
-  register uint32_t i, j;
-  for (i = 0; i < interface->row_height; i++) {
+  for (register uint8_t i = 0; i < interface->row_height; i++) {
     interface->set_cursor(0, i);
     for (j = 0; j < interface->pixel_width; j++) {
       interface->write_data(0xff);
@@ -45,11 +43,10 @@ void Display::put_string(const char *str) {
 }
 
 void Display::put_bar(const uint8_t size, const uint8_t filled, const uint8_t section_width) {
-  register uint32_t i;
   uint8_t total_width = size * section_width;
   uint8_t total_filled_width = filled * section_width;
   interface->write_data(0x7F);
-  for (i = 0; i < total_width; i++) {
+  for (register uint8_t i = 0; i < total_width; i++) {
     if (i < total_filled_width) {
       interface->write_data((i + 1) % section_width ? 0x7F : 0x41);
     } else {
