@@ -12,7 +12,7 @@ void Display::set_cursor(uint8_t x, uint8_t y) {
 void Display::clear() {
   for (register uint8_t i = 0; i < interface->row_height; i++) {
     interface->set_cursor(0, i);
-    for (j = 0; j < interface->pixel_width; j++) {
+    for (register uint8_t j = 0; j < interface->pixel_width; j++) {
       interface->write_data(0x00);
     }
   }
@@ -21,7 +21,7 @@ void Display::clear() {
 void Display::fill() {
   for (register uint8_t i = 0; i < interface->row_height; i++) {
     interface->set_cursor(0, i);
-    for (j = 0; j < interface->pixel_width; j++) {
+    for (register uint8_t j = 0; j < interface->pixel_width; j++) {
       interface->write_data(0xff);
     }
   }
