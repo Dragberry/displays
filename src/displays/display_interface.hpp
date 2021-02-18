@@ -25,14 +25,14 @@ protected:
   }
 
 public:
-  const uint8_t pixel_width;
-  const uint8_t pixel_height;
-  const uint8_t row_height;
+  const uint8_t width;
+  const uint8_t height;
+  const uint8_t rows;
 
-  DisplayInterface(uint8_t pixel_width, uint8_t pixel_height) :
-    pixel_width(pixel_width),
-    pixel_height(pixel_height),
-    row_height((pixel_height + 7) / 8) {
+  DisplayInterface(uint8_t width, uint8_t height) :
+    width(width),
+    height(height),
+    rows((height + 7) / 8) {
   }
 
   virtual void init() = 0;

@@ -12,8 +12,8 @@ class SSD1306DisplayInterface : public DisplayInterface {
 private:
   I2C *const i2c;
   const uint8_t address;
-  uint8_t command_block[2] = {0x40, 0x00};
-  uint8_t data_block[2] = {0x00, 0x00};
+  uint8_t command_block[2] = {0x00, 0x00};
+  uint8_t data_block[2] = {0x40, 0x00};
 
 public:
   SSD1306DisplayInterface(I2C *const i2c, const uint8_t address = 0x3C, const uint8_t height = 64) :

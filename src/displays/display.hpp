@@ -5,14 +5,13 @@
 #include <displays/display_interface.hpp>
 
 class Display {
-private:
+protected:
   DisplayInterface *const interface;
 
 public:
   Display(DisplayInterface *const interface);
 
-  template <typename IOInitializier>
-  void init(IOInitializier&& init_io) {
+  void init(void (*init_io)(void)) {
     init_io();
     interface->init();
     clear();
@@ -22,12 +21,12 @@ public:
 
   inline
   uint8_t get_width() const {
-    return interface->pixel_width;
+    return interface->width;
   }
 
   inline
   uint8_t get_height() const {
-    return interface->pixel_height;
+    return interface->height;
   }
 
   void clear();
